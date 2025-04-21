@@ -13,7 +13,7 @@ namespace PdfsReader
             {
                 string? folderPath = null;
                 string? keyword = null;
-
+                
                 while (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
                 {
                     Console.Write("Enter folder path: ");
@@ -25,7 +25,7 @@ namespace PdfsReader
                         folderPath = null;
                     }
                 }
-
+                
                 while (string.IsNullOrWhiteSpace(keyword))
                 {
                     Console.Write("Enter keyword to search: ");
@@ -41,6 +41,7 @@ namespace PdfsReader
                 Console.WriteLine($"Looking for keyword: \"{keyword}\"\n");
 
                 var pdfFiles = Directory.GetFiles(folderPath, "*.pdf");
+                var matchedFiles = new List<string>();
 
                 foreach (var file in pdfFiles)
                 {
@@ -54,20 +55,37 @@ namespace PdfsReader
 
                         if (text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
-                            Console.WriteLine(Path.GetFileName(file));
+                            matchedFiles.Add(Path.GetFileName(file));
                         }
                     }
-                    Console.Write("\nDo you want to perform another search? (yes/no): ");
-                    var answer = Console.ReadLine();
-
-                    if (string.IsNullOrWhiteSpace(answer) || !answer.Trim().ToLower().StartsWith("y"))
-                    {
-                        continueSearch = false;
-                    }
-
-                    Console.WriteLine();
                 }
+                
+                if (matchedFiles.Count > 0)
+                {
+                    Console.WriteLine("Files containing the keyword:");
+                    foreach (var filename in matchedFiles)
+                    {
+                        Console.WriteLine($"- {filename}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No files found with the given keyword.");
+                }
+
+                Console.WriteLine("\nSearch complete.");
+                
+                Console.Write("\nDo you want to perform another search? (yes/no): ");
+                var answer = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(answer) || !answer.Trim().ToLower().StartsWith("y"))
+                {
+                    continueSearch = false;
+                }
+
+                Console.WriteLine();
             }
+
             Console.WriteLine("Goodbye!");
         }
     }
