@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "+82bRmhKtT5LutdZ/Ud9KrRBBueAdR0gfLDSCJYS9IYI4dL2RcSk+Be4ssHCD/4fE1L9hJnEk86x3n+6PiRq9w==",
+  "success": true,
+  "projectFilePath": "/Users/nyitraibence/Desktop/C#projects/PdfsReader/PdfsReader/PdfsReader.csproj",
+  "expectedPackageFiles": [
+    "/Users/nyitraibence/.nuget/packages/uglytoad.pdfpig/1.7.0-custom-5/uglytoad.pdfpig.1.7.0-custom-5.nupkg.sha512",
+    "/Users/nyitraibence/.nuget/packages/uglytoad.pdfpig.core/1.7.0-custom-5/uglytoad.pdfpig.core.1.7.0-custom-5.nupkg.sha512",
+    "/Users/nyitraibence/.nuget/packages/uglytoad.pdfpig.fonts/1.7.0-custom-5/uglytoad.pdfpig.fonts.1.7.0-custom-5.nupkg.sha512",
+    "/Users/nyitraibence/.nuget/packages/uglytoad.pdfpig.tokenization/1.7.0-custom-5/uglytoad.pdfpig.tokenization.1.7.0-custom-5.nupkg.sha512",
+    "/Users/nyitraibence/.nuget/packages/uglytoad.pdfpig.tokens/1.7.0-custom-5/uglytoad.pdfpig.tokens.1.7.0-custom-5.nupkg.sha512"
+  ],
+  "logs": []
+}
