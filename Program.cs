@@ -46,7 +46,7 @@ namespace PdfsReader
                 {
                     using (PdfDocument document = PdfDocument.Open(file))
                     {
-                        string text = "";
+                        var text = "";
                         foreach (Page page in document.GetPages())
                         {
                             text += page.Text;
@@ -58,7 +58,7 @@ namespace PdfsReader
                         }
                     }
                     Console.Write("\nDo you want to perform another search? (yes/no): ");
-                    string? answer = Console.ReadLine();
+                    var answer = Console.ReadLine();
 
                     if (string.IsNullOrWhiteSpace(answer) || !answer.Trim().ToLower().StartsWith("y"))
                     {
