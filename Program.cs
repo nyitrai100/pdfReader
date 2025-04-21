@@ -7,55 +7,68 @@ namespace PdfsReader
     {
         static void Main()
         {
-            string? folderPath = null;
-            string? keyword = null;
-            
-            while (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
+            bool continueSearch = true;
+
+            while (continueSearch)
             {
-                Console.Write("Enter folder path: ");
-                folderPath = Console.ReadLine();
+                string? folderPath = null;
+                string? keyword = null;
 
-                if (!Directory.Exists(folderPath))
+                while (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
                 {
-                    Console.WriteLine("Invalid folder path. Try again.");
-                    folderPath = null;
-                }
-            }
-            
-            while (string.IsNullOrWhiteSpace(keyword))
-            {
-                Console.Write("Enter keyword to search: ");
-                keyword = Console.ReadLine();
+                    Console.Write("Enter folder path: ");
+                    folderPath = Console.ReadLine();
 
-                if (string.IsNullOrWhiteSpace(keyword))
-                {
-                    Console.WriteLine("Keyword cannot be empty. Try again.");
-                }
-            }
-
-            Console.WriteLine($"\nSearching PDFs in: {folderPath}");
-            Console.WriteLine($"Looking for keyword: \"{keyword}\"\n");
-
-            var pdfFiles = Directory.GetFiles(folderPath, "*.pdf");
-
-            foreach (var file in pdfFiles)
-            {
-                using (PdfDocument document = PdfDocument.Open(file))
-                {
-                    string text = "";
-                    foreach (Page page in document.GetPages())
+                    if (!Directory.Exists(folderPath))
                     {
-                        text += page.Text;
-                    }
-
-                    if (text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
-                    {
-                        Console.WriteLine(Path.GetFileName(file));
+                        Console.WriteLine("Invalid folder path. Try again.");
+                        folderPath = null;
                     }
                 }
-            }
 
-            Console.WriteLine("\nSearch complete.");
+                while (string.IsNullOrWhiteSpace(keyword))
+                {
+                    Console.Write("Enter keyword to search: ");
+                    keyword = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(keyword))
+                    {
+                        Console.WriteLine("Keyword cannot be empty. Try again.");
+                    }
+                }
+
+                Console.WriteLine($"\nSearching PDFs in: {folderPath}");
+                Console.WriteLine($"Looking for keyword: \"{keyword}\"\n");
+
+                var pdfFiles = Directory.GetFiles(folderPath, "*.pdf");
+
+                foreach (var file in pdfFiles)
+                {
+                    using (PdfDocument document = PdfDocument.Open(file))
+                    {
+                        string text = "";
+                        foreach (Page page in document.GetPages())
+                        {
+                            text += page.Text;
+                        }
+
+                        if (text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            Console.WriteLine(Path.GetFileName(file));
+                        }
+                    }
+                    Console.Write("\nDo you want to perform another search? (yes/no): ");
+                    string? answer = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(answer) || !answer.Trim().ToLower().StartsWith("y"))
+                    {
+                        continueSearch = false;
+                    }
+
+                    Console.WriteLine();
+                }
+            }
+            Console.WriteLine("Goodbye!");
         }
     }
 }
