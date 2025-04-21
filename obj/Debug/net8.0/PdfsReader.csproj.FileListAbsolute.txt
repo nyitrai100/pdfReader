@@ -19,3 +19,4 @@
 /Users/nyitraibence/Desktop/C#projects/PdfsReader/PdfsReader/obj/Debug/net8.0/PdfsReader.pdb
 /Users/nyitraibence/Desktop/C#projects/PdfsReader/PdfsReader/obj/Debug/net8.0/PdfsReader.genruntimeconfig.cache
 /Users/nyitraibence/Desktop/C#projects/PdfsReader/PdfsReader/obj/Debug/net8.0/ref/PdfsReader.dll
+/Users/nyitraibence/Desktop/C#projects/PdfsReader/PdfsReader/obj/Debug/net8.0/PdfsReader.sourcelink.json

@@ -1,18 +1,41 @@
 ﻿using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
 
-class Program
+namespace PdfsReader
 {
-    static void Main()
+    class Program
     {
-        Console.Write("Enter folder path: ");
-        string? folderPath = Console.ReadLine();
-
-        Console.Write("Enter keyword to search: ");
-        string? keyword = Console.ReadLine();
-
-        if (!string.IsNullOrEmpty(folderPath) && !string.IsNullOrEmpty(keyword))
+        static void Main()
         {
+            string? folderPath = null;
+            string? keyword = null;
+            
+            while (string.IsNullOrWhiteSpace(folderPath) || !Directory.Exists(folderPath))
+            {
+                Console.Write("Enter folder path: ");
+                folderPath = Console.ReadLine();
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Console.WriteLine("Invalid folder path. Try again.");
+                    folderPath = null;
+                }
+            }
+            
+            while (string.IsNullOrWhiteSpace(keyword))
+            {
+                Console.Write("Enter keyword to search: ");
+                keyword = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(keyword))
+                {
+                    Console.WriteLine("Keyword cannot be empty. Try again.");
+                }
+            }
+
+            Console.WriteLine($"\nSearching PDFs in: {folderPath}");
+            Console.WriteLine($"Looking for keyword: \"{keyword}\"\n");
+
             var pdfFiles = Directory.GetFiles(folderPath, "*.pdf");
 
             foreach (var file in pdfFiles)
@@ -31,12 +54,8 @@ class Program
                     }
                 }
             }
-        }
-        else
-        {
-            Console.WriteLine("Folder Path not valid!");
-        }
 
-        Console.WriteLine("Search complete.");
+            Console.WriteLine("\nSearch complete.");
+        }
     }
 }

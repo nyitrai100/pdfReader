@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PdfsReader")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33b12da8d4956cf12a58e7e80028038c2c7dde38")]
 [assembly: System.Reflection.AssemblyProductAttribute("PdfsReader")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PdfsReader")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
